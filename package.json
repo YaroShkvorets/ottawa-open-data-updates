@@ -13,6 +13,9 @@
     "got": "^8.3.2",
     "nodemailer": "4.6.7"
   },
+  "scripts": {
+    "test": "node ./fetch.js"
+  },
   "repository": [
     {
       "type": "git",
