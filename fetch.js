@@ -10,18 +10,21 @@ var transporter = nodemailer.createTransport({
   auth: {
     user: 'ottopendata@gmail.com',
     pass: 'opendata'
+  },
+  tls: {
+      rejectUnauthorized: false
   }
 });
 
 
 
-function sendEmail(body)
+function sendEmail(subj, body)
 {
   var mailOptions = {
     from: 'ottopendata@gmail.com',
     to: 'shkvorets@gmail.com',
-    subject: 'New Ottawa Open Data update',
-    text: body
+    subject: subj,
+    html: body
   };
 
   transporter.sendMail(mailOptions, function(error, info){
@@ -35,15 +38,24 @@ function sendEmail(body)
 
 got('http://data.ottawa.ca/api/3/action/recently_changed_packages_activity_list', { json: false }).then(response => {
   const res = JSON.parse(response.body)
-  let body = 'Found new objects: \n'
+  let body = "<ul>"
+  let i=0
   for(let obj of res.result){
     if(obj.timestamp.indexOf(today)==0){
-      body+=obj.timestamp+'\n'
-
+    //  console.log(obj)
+      body+='<li><a href = "http://data.ottawa.ca/dataset/'+obj.data.package.name+'">'+obj.data.package.name+'</a></li>'
+      i++
     }
   }
-  sendEmail(body)
+  body+='</ul>'
+  if(i>0){
+    subject = i + ' updated datasets on Ottawa open data portal'
+    sendEmail(subject, body)
+  }
+  else{
+    console.log('No dataset updates')
+  }
 
 }).catch(error => {
-  console.log(error.response.body);
+  console.log('Failed to request package activity list. Error: ', error);
 });
