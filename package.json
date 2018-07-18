@@ -1,0 +1,22 @@
+{
+  "name": "ottawa-open-data-updates",
+  "description": "Sends email when there is an updated dataset on Ottawa open data portal",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Yaro Shkvorets",
+      "email": "shkvorets@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "got": "^8.3.2",
+    "nodemailer": "4.6.7"
+  },
+  "repository": [
+    {
+      "type": "git",
+      "url": "git://github.com/zzptichka/ottawa-open-data-updates.git"
+    }
+  ]
+}
