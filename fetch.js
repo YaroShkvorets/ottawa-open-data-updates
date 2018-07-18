@@ -1,8 +1,8 @@
 const got = require('got');
 const nodemailer = require('nodemailer');
 
-//const today = new Date().toISOString().slice(0,10)
-const today = "2018-07-17"
+const today = new Date().toISOString().slice(0,10)
+//const today = "2018-07-17"
 
 
 var transporter = nodemailer.createTransport({
