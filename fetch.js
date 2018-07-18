@@ -2,15 +2,17 @@ const got = require('got');
 const nodemailer = require('nodemailer');
 
 const today = new Date().toISOString().slice(0,10)
-//const today = "2018-07-17"
-
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'ottopendata@gmail.com',
-    pass: 'opendata'
-  },
+  service: 'Gmail',
+  host: "smtp.gmail.com",
+  auth:{
+          type: 'OAuth2',
+          user:"ottopendata@gmail.com",
+          clientId:"321397177067-o8la2emmaj0lk0evst6truva39ogarnv.apps.googleusercontent.com",
+          clientSecret:"1UydiTqna7R1pLiCL3e85ekz",
+          refreshToken:"1/0sTRLbVBsvSAyQjwtpdqNOqKDwQq3IUxTkrcXfhXYhE"
+       },
   tls: {
       rejectUnauthorized: false
   }
