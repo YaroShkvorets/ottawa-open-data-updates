@@ -1,3 +1,6 @@
+//add your email to the array below
+const sendTo = ['shkvorets@gmail.com', 'ottopendata@gmail.com']
+
 const got = require('got');
 const nodemailer = require('nodemailer');
 
@@ -23,8 +26,8 @@ var transporter = nodemailer.createTransport({
 function sendEmail(subj, body)
 {
   var mailOptions = {
-    from: 'ottopendata@gmail.com',
-    to: 'shkvorets@gmail.com',
+    from: 'Ottawa Open Data <ottopendata@gmail.com>',
+    bcc: sendTo.join(', '),
     subject: subj,
     html: body
   };
@@ -44,7 +47,6 @@ got('http://data.ottawa.ca/api/3/action/recently_changed_packages_activity_list'
   let i=0
   for(let obj of res.result){
     if(obj.timestamp.indexOf(today)==0){
-    //  console.log(obj)
       body+='<li><a href = "http://data.ottawa.ca/dataset/'+obj.data.package.name+'">'+obj.data.package.name+'</a></li>'
       i++
     }
