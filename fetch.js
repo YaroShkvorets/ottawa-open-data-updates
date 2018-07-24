@@ -1,5 +1,5 @@
 //add your email to the array below
-const sendTo = ['shkvorets@gmail.com', 'ottopendata@gmail.com']
+const sendTo = ['shkvorets+opendata@gmail.com', 'ottopendata@gmail.com']
 
 const got = require('got');
 const nodemailer = require('nodemailer');
