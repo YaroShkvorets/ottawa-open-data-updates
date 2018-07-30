@@ -49,6 +49,7 @@ got('http://data.ottawa.ca/api/3/action/recently_changed_packages_activity_list'
     if(obj.timestamp.indexOf(today)==0){
       body+='<li><a href = "http://data.ottawa.ca/dataset/'+obj.data.package.name+'">'+obj.data.package.name+'</a></li>'
       i++
+      console.log('New dataset:', obj.data.package.name)
     }
   }
   body+='</ul>'
